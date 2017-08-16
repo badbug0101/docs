@@ -1,7 +1,7 @@
 Primer on `tcpdump`
 ---
 
-Here are some small `tcpdump` tricks that I thought could be helpful to others as well. Although untested on Windows, it should work on Linux, *BSD and Linux on Windows (called **Linux subsystem for Windows**). The `$` denotes the shell prompt.
+Here are some small `tcpdump` tricks that I thought could be helpful to others as well. Although untested on Windows, it should work on Linux, \*BSDs and Linux subsystem for Windows (there *probably* is a package for Cygwin as well). The `$` denotes the shell prompt. If you are using Linux subsystem for Windows, I am not sure if it comes pre-installed; nonetheless you can install `tcpdump` via `apt` using `sudo apt-get install -y tcpdump`.
 
 * To keep simple things simple, i'll begin with the format of `tcpdump`
 
