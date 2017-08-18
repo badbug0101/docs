@@ -10,6 +10,8 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
     Options are things like e.g. `-i any -nn -A -v`.
     Expressions are things like e.g. `dst port 9999` and should be single quoted e.g. `'host www.example.com'`.
 
+* If the interface option is left unspecified (`-i`), then based on the implementation, `tcpdump` will choose the default interface available. On Linux and FreeBSD this is usually the first available network interface such as `eth0`, `re0`. On macOS, this is a pseudo interface `PKTAP` which captures on all available interfaces.
+
 * To trace packets on network interface `eth0` and **not** perform any DNS name resolution `-n` and give super brief info of the packet traces `-q`
 
     `$ tcpdump -i eth0 -nq`
@@ -123,6 +125,7 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
 
 Adapted from the `tcpdump` manpage
 ---
+I can't recommend `tcpdump` manpage enough. I have spent a long time (more than a decade) reading that manpage and every single time I find something new to learn in it.
 
 * To print the start and end packets (the SYN and FIN packets) of each TCP conversation that involves a non-local host.
 
