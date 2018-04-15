@@ -83,7 +83,7 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
 
     `$ tcpdump -r /tmp/icmp-trace.pcap`
 
-* The `tcpdump` expressions can be viewed as a BPF virtual instructions using the `-d` option
+* The `tcpdump` expressions can be viewed as a BPF instructions using the `-d` option
   <pre>
   $ tcpdump -d 'dst host 1.2.3.4'
   (000) ldh      [12]
@@ -97,7 +97,7 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
   (008) ret      #65535
   (009) ret      #0
   </pre>
-  Each line is a BPF instruction set that can be executed within the BPF virtual machine.
+  Each line is a BPF instruction set that can be executed within a BPF virtual machine.
 
 * To trace all udp packets in a destination port range 50000-65535 (inclusive)
 
@@ -122,6 +122,9 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
 * To print the first hundred `tcp` packets to destination port 80 on `eth0`
 
     `$ tcpdump -n -i eth0 -c 100 'tcp and dst port 80'`
+
+* Capture packets indefinitely and rotate every 10 seconds
+    `$ tcpdump -i eth0 -G 10 -w dump-%S.pcap 'dst port 80'`
 
 Adapted from the `tcpdump` manpage
 ---
