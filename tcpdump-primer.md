@@ -85,7 +85,7 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
 
 * The `tcpdump` expressions can be viewed as a BPF instructions using the `-d` option
   <pre>
-  $ tcpdump -d 'dst host 1.2.3.4'
+  $ tcpdump -d 'dst host 8.8.4.4'
   (000) ldh      [12]
   (001) jeq      #0x800           jt 2	jf 4
   (002) ld       [30]
@@ -124,11 +124,13 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
     `$ tcpdump -n -i eth0 -c 100 'tcp and dst port 80'`
 
 * Capture packets indefinitely and rotate every 10 seconds
+
     `$ tcpdump -i eth0 -G 10 -w dump-%S.pcap 'dst port 80'`
 
 Adapted from the `tcpdump` manpage
 ---
-I can't recommend `tcpdump` manpage enough. I have spent a long time (more than a decade) reading that manpage and every single time I find something new to learn in it.
+I can't recommend `tcpdump` man page enough. I have spent a long time reading it and every single time I find something new in it.
+Following are some of the handy ones:
 
 * To print the start and end packets (the SYN and FIN packets) of each TCP conversation that involves a non-local host.
 
@@ -142,10 +144,10 @@ I can't recommend `tcpdump` manpage enough. I have spent a long time (more than 
 
     `$ tcpdump -n -i eth0 'gateway snup and ip[2:2] > 576'`
 
-* To print IP broadcast or multicast packets that were not sent via  Ethernet broadcast or multicast:
+* To print IP broadcast or multi-cast packets that were not sent via  Ethernet broadcast or multicast:
 
     `$ tcpdump -n -i eth0 'ether[0] & 1 = 0 and ip[16] >= 224'`
 
-* To print all ICMP packets that are not echo requests/replies (i.e., not ping packets):
+* To print all ICMP packets that are not an ICMP echo request/reply (e.g. not ping packets):
 
     `$ tcpdump -n -i eth0 'icmp[icmptype] != icmp-echo and icmp[icmptype] != icmp-echoreply'`
