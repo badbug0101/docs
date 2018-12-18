@@ -1,7 +1,11 @@
-Primer on `tcpdump`
----
+## Mini-primer on tcpdump
 
-Here are some small `tcpdump` tricks that I thought could be helpful to others as well. Although untested on Windows, it should work on Linux, \*BSDs and Linux subsystem for Windows (there *probably* is a package for Cygwin as well). The `$` denotes the shell prompt. If you are using Linux subsystem for Windows, I am not sure if it comes pre-installed; nonetheless you can install `tcpdump` via `apt` using `sudo apt-get install -y tcpdump`.
+You are here and that's great! Let's learn to dump 'em packets ;)
+
+Here are some small `tcpdump` tricks that I thought could be helpful to others as well. 
+It should work on MacOS, Linux, and any number of *BSDs. The `$` denotes the shell prompt.
+The last time I checked Windows (Linux subsystem), it did not support `tcpdump`. Call
+your Microsoft rep to get it on Linux subsystem! :)
 
 * To keep simple things simple, i'll begin with the format of `tcpdump`
 
@@ -97,7 +101,7 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
   (008) ret      #65535
   (009) ret      #0
   </pre>
-  Each line is a BPF instruction set that can be executed within a BPF virtual machine.
+  Each line is a BPF instruction that can be executed within a BPF VM.
 
 * To trace all udp packets in a destination port range 50000-65535 (inclusive)
 
@@ -127,8 +131,8 @@ Here are some small `tcpdump` tricks that I thought could be helpful to others a
 
     `$ tcpdump -i eth0 -G 10 -w dump-%S.pcap 'dst port 80'`
 
-Adapted from the `tcpdump` manpage
----
+### Adapted from the `tcpdump` manpage
+
 I can't recommend `tcpdump` man page enough. I have spent a long time reading it and every single time I find something new in it.
 Following are some of the handy ones:
 
